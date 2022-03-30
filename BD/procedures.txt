@@ -1,0 +1,69 @@
+-- Procedure cadastrar paciente
+ DELIMITER //
+create procedure insertUserPaciente(nome varchar(100), user_email varchar(100), telefone varchar(14), senha varchar(100), cpf varchar(14))
+begin
+	declare idUser INT;
+    
+    insert into usuario (nome, email, telefone, senha) values (nome,user_email,telefone,senha);
+    
+    select id from usuario where email = user_email into idUser;
+    
+    insert into pacientes (idUsuario, cpf) values (idUser, cpf);
+    
+    END//
+DELIMITER ;
+
+-- Procedure cadastrar medico
+DELIMITER //
+create procedure insertUserMedico(nome varchar(100), user_email varchar(100), telefone varchar(14), senha varchar(100), CRM varchar(10), especialidade varchar(100))
+begin
+	declare idUser INT;
+    
+    insert into usuario (nome, email, telefone, senha) values (nome,user_email,telefone,senha);
+    
+    select id from usuario where email = user_email into idUser;
+    
+    insert into medicos (idUsuario, CRM, especialidade) values (idUser, CRM, especialidade);
+    
+    END//
+DELIMITER ;
+
+-- Procedure para cadastrar consulta
+ DELIMITER //
+create procedure createConsulta(nomeMedico varchar(100), emailPaciente varchar(100), horario varchar(20), dia varchar(20))
+begin
+	declare idPaciente INT;
+    declare idMedico int;
+    declare emailMedico varchar(100);
+    
+    select idUsuario from pacientes p
+    inner join  usuario u on p.idUsuario = u.id
+    where email = emailPaciente into idPaciente;
+    
+    select idUsuario, u.email from medicos m
+    inner join  usuario u on m.idUsuario = u.id
+    where nome = nomeMedico into idMedico, emailMedico;
+
+    insert into consulta (idPaciente, emailPaciente, emailMedico, idMedico, horario, dia) values (idPaciente,emailPaciente,emailMedico,idMedico,horario,dia);
+    
+    END//
+DELIMITER ;
+
+-- Procedure para cadastrar agenda do Médico
+  DELIMITER //
+create procedure createAgendaMedico(nomeMedico varchar(100), horarioP varchar(20), diaP varchar(20))
+begin
+    declare medico int;
+    declare agenda int;
+    
+    select idUsuario from medicos m
+    inner join  usuario u on m.idUsuario = u.id
+    where nome = nomeMedico into medico;
+    
+    select id from agenda
+    where horario = horarioP
+    and dia = diaP into agenda;
+
+    insert into agenda_medico (idMedico, idAgenda) values (medico,agenda);
+    END//
+DELIMITER ;

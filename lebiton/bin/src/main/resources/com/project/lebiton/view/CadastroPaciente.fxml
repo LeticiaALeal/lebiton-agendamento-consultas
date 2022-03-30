@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.lebiton.controller.CadastroPacienteController">
+   <children>
+      <Label layoutX="131.0" layoutY="74.0" text="Nome:" />
+      <Label layoutX="131.0" layoutY="254.0" text="Endereco:" />
+      <Label layoutX="131.0" layoutY="135.0" text="Data de Nascimento:" />
+      <Label layoutX="132.0" layoutY="443.0" text="E-mail:" />
+      <Label layoutX="131.0" layoutY="312.0" text="Telefone:" />
+      <Label layoutX="131.0" layoutY="190.0" text="CPF:" />
+      <Label layoutX="132.0" layoutY="503.0" text="Senha:" />
+      <TextField fx:id="txNome" layoutX="131.0" layoutY="91.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txDataNascimento" layoutX="131.0" layoutY="151.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txCpf" layoutX="131.0" layoutY="207.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEndereco" layoutX="131.0" layoutY="270.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txTelefone" layoutX="131.0" layoutY="328.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txEmail" layoutX="132.0" layoutY="460.0" prefHeight="34.0" prefWidth="340.0" />
+      <TextField fx:id="txSenha" layoutX="132.0" layoutY="520.0" prefHeight="34.0" prefWidth="340.0" />
+      <Button fx:id="btCadastrar" layoutX="132.0" layoutY="585.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="34.0" prefWidth="340.0" text="Cadastrar" />
+      <Separator layoutX="1.0" layoutY="383.0" prefHeight="8.0" prefWidth="601.0" />
+      <Label layoutX="215.0" layoutY="21.0" text="Faça seu cadastro">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button id="btVoltar" fx:id="btVoltar" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#voltarLogin" prefHeight="27.0" prefWidth="81.0" text="Voltar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="rbMedico" layoutX="325.0" layoutY="409.0" mnemonicParsing="false" text="Médico">
+         <toggleGroup>
+            <ToggleGroup fx:id="usuario" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbPaciente" layoutX="208.0" layoutY="409.0" mnemonicParsing="false" selected="true" text="Paciente" toggleGroup="$usuario" />
+   </children>
+</Pane>
